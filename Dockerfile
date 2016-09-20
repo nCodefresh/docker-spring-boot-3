@@ -6,9 +6,12 @@ RUN apt-get install -y maven
 WORKDIR /code
 
 ADD pom.xml /code/pom.xml
+ADD log.sh /code/log.sh
 
 ADD src /code/src
 RUN ["mvn", "package"]
+
+RUN sh log.sh
 
 VOLUME /tmp
 
